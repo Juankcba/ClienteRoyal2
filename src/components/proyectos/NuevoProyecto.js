@@ -15,12 +15,13 @@ const NuevoProyecto = (props) => {
   useEffect(() => {
     const obtenerProgramas = async () => {
       const url = 'http://erpdv.preupdv.cl:8090/v1/carro/programas';
-      const programas = await axios.get(url).then((resultado) => {
-            console.log("cantidad de elementos " , size(resultado));
-            guardarProgramas(resultado);
-          })
-          .catch((e) => console.log(e));
-    }
+      const programas = await axios.get(url);
+
+            console.log("cantidad de elementos " , size(programas.data));
+            guardarProgramas(programas.data);
+          }
+          
+    
     obtenerProgramas();
     
   }, [])
@@ -28,12 +29,11 @@ const NuevoProyecto = (props) => {
 
     const obtenerSedes = async () => {
       const url = 'http://erpdv.preupdv.cl:8090/v1/carro/sedes';
-      const programas = await axios.get(url).then((resultado) => {
-            console.log("cantidad de elementos " , size(resultado));
-            guardarSedes(resultado);
-          })
-          .catch((e) => console.log(e));
+      const programas = await axios.get(url)
+            console.log("cantidad de elementos " , size(programas.data));
+            guardarSedes(programas.data);
     }
+    
     obtenerSedes();
 
     
@@ -41,11 +41,10 @@ const NuevoProyecto = (props) => {
   useEffect(() => {
     const obtenerRegiones = async () => {
       const url = 'http://erpdv.preupdv.cl:8090/v1/carro/regiones';
-      const programas = await axios.get(url).then((resultado) => {
-            console.log("cantidad de elementos " , size(resultado));
-            setRegiones(resultado);
-          })
-          .catch((e) => console.log(e));
+      const programas = await axios.get(url)
+            console.log("cantidad de elementos " , size(programas.data));
+            setRegiones(programas.data);
+         
     }
     obtenerRegiones();
    
@@ -53,12 +52,12 @@ const NuevoProyecto = (props) => {
   useEffect(() => {
     const obtenerCiudades = async () => {
       const url = 'http://erpdv.preupdv.cl:8090/v1/carro/ciudad/all';
-      const programas = await axios.get(url).then((resultado) => {
-            console.log("cantidad de elementos " , size(resultado));
-            setCiudades(resultado);
-          })
-          .catch((e) => console.log(e));
-    }
+      const programas = await axios.get(url)
+            console.log("cantidad de elementos " , size(programas.data));
+            setCiudades(programas.data);
+          }
+       
+    
     obtenerCiudades();
    
     
@@ -66,28 +65,25 @@ const NuevoProyecto = (props) => {
   useEffect(() => {
     const obtenerRamos = async () => {
       const url = 'http://erpdv.preupdv.cl:8090/v1/carro/ramos';
-      const programas = await axios.get(url).then((resultado) => {
-            console.log("cantidad de elementos " , size(resultado));
-            setRamos(resultado);
-          })
-          .catch((e) => console.log(e));
-    }
+      const programas = await axios.get(url);
+            console.log("cantidad de elementos " , size(programas.data));
+            setRamos(programas.data);
+          }
+          
+    
     obtenerRamos();
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/comuna/all" , {
-      method: "GET",
-      headers: {
-          "Content-Type": "text/plain"
-      }});
-    const programas = resultado.then((respuesta) => respuesta.json());
-    programas
-      .then((resultado) => {
-        console.log("cantidad de elementos " , size(resultado));
-        setComunas(resultado);
-      })
-      .catch((e) => console.log(e));
+    const obtenerComuna = async () => {
+      const url = 'http://erpdv.preupdv.cl:8090/v1/carro/comuna/all';
+      const programas = await axios.get(url);
+            console.log("cantidad de elementos " , size(programas.data));
+            setComunas(programas.data);
+          
+    }
+    obtenerComuna();
+    
     
   }, [])
   
