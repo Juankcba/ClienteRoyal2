@@ -51,33 +51,28 @@ const NuevoProyecto = (props) => {
    
   }, [])
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/ciudad/all"  ,{
-      method: "GET",
-      headers: {
-          "Content-Type": "text/plain"
-      }});
-    const programas = resultado.then((respuesta) => respuesta.json());
-    programas
-      .then((resultado) => {
-        console.log("cantidad de elementos " , size(resultado));
-        setCiudades(resultado);
-      })
-      .catch((e) => console.log(e));
+    const obtenerCiudades = async () => {
+      const url = 'http://erpdv.preupdv.cl:8090/v1/carro/ciudad/all';
+      const programas = await axios.get(url).then((resultado) => {
+            console.log("cantidad de elementos " , size(resultado));
+            setCiudades(resultado);
+          })
+          .catch((e) => console.log(e));
+    }
+    obtenerCiudades();
+   
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/ramos" , {
-      method: "GET",
-      headers: {
-          "Content-Type": "text/plain"
-      }});
-    const programas = resultado.then((respuesta) => respuesta.json());
-    programas
-      .then((resultado) => {
-        console.log("cantidad de elementos " , size(resultado));
-        setRamos(resultado);
-      })
-      .catch((e) => console.log(e));
+    const obtenerRamos = async () => {
+      const url = 'http://erpdv.preupdv.cl:8090/v1/carro/ramos';
+      const programas = await axios.get(url).then((resultado) => {
+            console.log("cantidad de elementos " , size(resultado));
+            setRamos(resultado);
+          })
+          .catch((e) => console.log(e));
+    }
+    obtenerRamos();
     
   }, [])
   useEffect(() => {
