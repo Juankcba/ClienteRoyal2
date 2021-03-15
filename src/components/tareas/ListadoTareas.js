@@ -11,7 +11,7 @@ const ListadoTareas = () => {
      const tareasContext = useContext(tareaContext);
      const {tareasproyecto} = tareasContext;
     //si no hay proyecto selecionado 
-    if(!proyecto) return <h2>Seleciona un Cliente</h2>
+    if(!proyecto) return <h2>Seleciona una Opción</h2>
     //Array destructuring para extraer el proyecto actual
 
     const [proyectoActual] = proyecto;
@@ -22,32 +22,7 @@ const ListadoTareas = () => {
     }
     return (
         <Fragment>
-        <h2>Cliente: {proyectoActual.nombre}</h2>
-        <ul className="listado-tareas">
-            {tareasproyecto.length === 0
-             ?(<li className ="tarea"><p>No Hay Pedidos</p></li>)            
-             : <TransitionGroup>
-                { tareasproyecto.map(tarea => (
-                 <CSSTransition
-                    key={tarea.id}
-                    timeout={200}
-                    className="tarea"
-                 >
-                    <Tarea 
-                        tarea={tarea}
-                    />
-                 </CSSTransition>
-             ))}
-             </TransitionGroup>
-            }
-
-
-        </ul>
-        <button 
-        type="button"
-        className="btn btn-eliminar"
-        onClick = {onClickEliminar}
-        >Eliminar Cliente &times;</button>
+        
         </Fragment>
      );
 }

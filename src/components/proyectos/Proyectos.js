@@ -1,4 +1,4 @@
-import React,{useContext,useEffect} from 'react';
+import React,{useContext,useEffect, useState} from 'react';
 import Sidebar from '../layout/Sidebar';
 import Barra from '../layout/Barra';
 import FormTarea from '../tareas/FormTarea';
@@ -9,6 +9,7 @@ const Proyectos = () => {
     //Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
     const {usuarioAutenticado} = authContext;
+    const [opcion, setOpcion] = useState(undefined);
     useEffect(() => {
         usuarioAutenticado();
         // eslint-disable-next-line
@@ -16,14 +17,15 @@ const Proyectos = () => {
     return (  
 
            <div className="contenedor-app">
-              <Sidebar /> 
+              <Sidebar setOpcion={setOpcion}/> 
 
                <div className ="seccion-principal">
                    <Barra />
                    <main>
                    <FormTarea />
                        <div className="contenedor-tareas">
-                       <ListadoTareas />
+                           {opcion}
+                       
                        </div>
                    </main>
                </div>

@@ -19,12 +19,6 @@ if(token){
 }
 function App() {
 
-    // Crear listado de Productos
-
-    const [productos, guardarProductos ] = useState([
-        {id:1, nombre: 'Servidor', ip: '192.168.155.10'},
-        {id:2, nombre: 'Director', ip: '192.168.155.11'},
-    ]);
     
     //Obtener la fe<cha
 
