@@ -2,7 +2,9 @@ import React, { Fragment, useState, useContext, useEffect } from "react";
 import proyectoContext from "../../context/proyectos/proyectoContext";
 import Tabla from "../tabla/Tabla";
 import {size} from "lodash";
+
 const NuevoProyecto = (props) => {
+  const axios = require('axios');
   const {setOpcion} = props; 
   const [programas, guardarProgramas] = useState({});
   const [sedes, guardarSedes] = useState({});
@@ -11,40 +13,49 @@ const NuevoProyecto = (props) => {
   const [comunas, setComunas] = useState({});
   const [ramos, setRamos] = useState({});
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/programas");
-    const programas = resultado.then((respuesta) => respuesta.json());
-    programas
-      .then((resultado) => {
-        console.log("cantidad de elementos " , size(resultado));
-        guardarProgramas(resultado);
-      })
-      .catch((e) => console.log(e));
+    const obtenerProgramas = async () => {
+      const url = 'http://erpdv.preupdv.cl:8090/v1/carro/programas';
+      const programas = await axios.get(url).then((resultado) => {
+            console.log("cantidad de elementos " , size(resultado));
+            guardarProgramas(resultado);
+          })
+          .catch((e) => console.log(e));
+    }
+    obtenerProgramas();
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/sedes");
-    const programas = resultado.then((respuesta) => respuesta.json());
-    programas
-      .then((resultado) => {
-        console.log("cantidad de elementos " , size(resultado));
-        guardarSedes(resultado);
-      })
-      .catch((e) => console.log(e));
+
+    const obtenerSedes = async () => {
+      const url = 'http://erpdv.preupdv.cl:8090/v1/carro/sedes';
+      const programas = await axios.get(url).then((resultado) => {
+            console.log("cantidad de elementos " , size(resultado));
+            guardarSedes(resultado);
+          })
+          .catch((e) => console.log(e));
+    }
+    obtenerSedes();
+
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/regiones");
-    const programas = resultado.then((respuesta) => respuesta.json());
-    programas
-      .then((resultado) => {
-        console.log("cantidad de elementos " , size(resultado));
-        setRegiones(resultado);
-      })
-      .catch((e) => console.log(e));
-    
+    const obtenerRegiones = async () => {
+      const url = 'http://erpdv.preupdv.cl:8090/v1/carro/regiones';
+      const programas = await axios.get(url).then((resultado) => {
+            console.log("cantidad de elementos " , size(resultado));
+            setRegiones(resultado);
+          })
+          .catch((e) => console.log(e));
+    }
+    obtenerRegiones();
+   
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/ciudad/all");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/ciudad/all"  ,{
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -55,7 +66,11 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/ramos");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/ramos" , {
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -66,7 +81,11 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/comuna/all");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/comuna/all" , {
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
