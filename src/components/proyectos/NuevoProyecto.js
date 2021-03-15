@@ -11,7 +11,11 @@ const NuevoProyecto = (props) => {
   const [comunas, setComunas] = useState({});
   const [ramos, setRamos] = useState({});
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/programas");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/programas",  {
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -22,7 +26,11 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/sedes");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/sedes" , {
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -33,7 +41,11 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/regiones");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/regiones" , {
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -44,7 +56,11 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/ciudad/all");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/ciudad/all"  ,{
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -55,7 +71,11 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/ramos");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/ramos" , {
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -66,7 +86,11 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/comuna/all");
+    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/comuna/all" , {
+      method: "GET",
+      headers: {
+          "Content-Type": "text/plain"
+      }});
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
