@@ -11,7 +11,7 @@ const NuevoProyecto = (props) => {
   const [comunas, setComunas] = useState({});
   const [ramos, setRamos] = useState({});
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/programas");
+    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/programas");
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -22,7 +22,7 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/sedes");
+    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/sedes");
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -33,7 +33,7 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/regiones");
+    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/regiones");
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -44,7 +44,7 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/ciudad/all");
+    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/ciudad/all");
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -55,7 +55,7 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/ramos");
+    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/ramos");
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
@@ -66,7 +66,7 @@ const NuevoProyecto = (props) => {
     
   }, [])
   useEffect(() => {
-    const resultado = fetch("http://erpdv.preupdv.cl:8090/v1/carro/comuna/all");
+    const resultado = fetch("https://erpdv.preupdv.cl:8090/v1/carro/comuna/all");
     const programas = resultado.then((respuesta) => respuesta.json());
     programas
       .then((resultado) => {
