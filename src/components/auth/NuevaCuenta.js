@@ -126,7 +126,7 @@ const NuevaCuenta = (props) => {
                        </div>
                    </form>
 
-                   <Link to={'Login'} className="enlace-cuenta">
+                   <Link to={'/'} className="enlace-cuenta">
                        Volver a Iniciar Sesion
                    </Link>
                </div>
