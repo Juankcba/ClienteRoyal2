@@ -2,6 +2,9 @@ import React, { Fragment, useState, useContext, useEffect } from "react";
 import proyectoContext from "../../context/proyectos/proyectoContext";
 import Tabla from "../tabla/Tabla";
 import {size} from "lodash";
+const fetch = require("node-fetch");
+const SERVER =  'http://qaerpdv.preupdv.cl';
+const SERVER_PORT =  8090;
 
 const NuevoProyecto = (props) => {
   const axios = require('axios');
@@ -14,11 +17,26 @@ const NuevoProyecto = (props) => {
   const [ramos, setRamos] = useState({});
   useEffect(() => {
     const obtenerProgramas = async () => {
-      const url = 'http://erpdv.preupdv.cl:8090/v1/carro/programas';
-      const programas = await axios.get(url);
-
-            console.log("cantidad de elementos " , size(programas.data));
-            guardarProgramas(programas.data);
+      const url = `${SERVER}:${SERVER_PORT}/v1/carro/programas`;
+      
+      
+      const response = await fetch(url,{
+        method:'GET',
+          headers : {
+              'Content-Type' : 'application/json',
+              "Accept": "*/*",
+              "Cache-Control": "no-cache",
+              "Host": `${url.replace('http://','').replace('https://','')}:8090`,
+              "Content-Length": "746",
+              "Connection": "keep-alive",
+              
+          },
+      
+      });
+      const programas = await response.json();
+      
+            console.log("cantidad de elementos " , size(programas));
+            guardarProgramas(programas);
           }
           
     
